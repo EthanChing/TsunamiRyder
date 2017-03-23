@@ -23,7 +23,7 @@ public class TimeRewind : MonoBehaviour
             currentTime = 0;
             lastPoint = this.transform.position;
         }
-        if (controller.Action2.WasPressed)
+        if (controller.Action3.WasPressed)
         {
             transform.position = lastPoint;
         }
