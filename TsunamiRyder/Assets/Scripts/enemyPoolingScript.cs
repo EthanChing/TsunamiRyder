@@ -23,16 +23,26 @@ public class enemyPoolingScript : MonoBehaviour {
     {
         pooledEnemys = new List<GameObject>();
         GameObject[] enemies = Resources.LoadAll<GameObject>("Prefabs/Enemies");
-        bool hasHouse = false;
-        for (int i= 0; i < poolAmount; i++)
+        //MAke the TAGS !!!!
+        Dictionary<string, int> enemyCounts = new Dictionary<string, int>()
         {
-            
-            GameObject obj = Instantiate(enemies[Random.Range(0, enemies.Length)]);
+            {"house", 1 },
+            {"cow", 4 },
+            {"nuke",1 },
+            {"theDonal",1 },
+            {"shark",3 },
+            {"car", 4 }
 
-          
+        };
 
-            obj.SetActive(false);
-            pooledEnemys.Add(obj);
+        for (int i= 0; i < enemies.Length; i++)
+        {
+            for (int nEnemies = 0; nEnemies < enemyCounts[enemies[i].tag]; nEnemies++)
+            {
+                GameObject obj = Instantiate(enemies[i]);
+                obj.SetActive(false);
+                pooledEnemys.Add(obj);
+            }
         }
 
 	}
@@ -63,7 +73,9 @@ public class enemyPoolingScript : MonoBehaviour {
         {
             index = Random.Range(0, pooledEnemys.Count);
         }
+        //This can become infinite loop if none found, but that precaution is made in above if statement.
         while (pooledEnemys[index].activeInHierarchy);
+
         return pooledEnemys[index];
 
         /*
