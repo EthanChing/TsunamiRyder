@@ -17,7 +17,8 @@ public class enemyPoolingScript : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         pooledEnemys = new List<GameObject>();
         for(int i= 0; i< poolAmount; i++)
         {
@@ -27,9 +28,22 @@ public class enemyPoolingScript : MonoBehaviour {
         }
 
 	}
+    public GameObject getPooledEnemy()
+    {
+        for( int i= 0; i< pooledEnemys.Count; i++)
+        {
+            if(!pooledEnemys[i].activeInHierarchy)
+            {
+                return pooledEnemys[i];
+            }
+        }
+        if (willGrow)
+        {
+            GameObject obj = (GameObject)Instantiate(pooledEnemy);
+            pooledEnemys.Add(obj);
+            return obj;
+        }
+        return null;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

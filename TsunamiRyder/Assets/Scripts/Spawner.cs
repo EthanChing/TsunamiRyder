@@ -28,11 +28,13 @@ public class Spawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        //a clone of the enemy prefab
-        GameObject enemyClone;
+        GameObject obj = enemyPoolingScript.current.getPooledEnemy();
 
-        //spawns enemyClone at this location and rotation   
-        enemyClone = Instantiate(enemy, this.transform.position, this.transform.rotation) as GameObject;
+        if (obj == null) return;
+
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        obj.SetActive(true);
 
         //randomly moves spawner along x axis
         float x = Random.Range(leftBound, rightBound);
