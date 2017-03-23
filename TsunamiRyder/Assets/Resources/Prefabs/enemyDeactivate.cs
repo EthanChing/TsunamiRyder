@@ -10,7 +10,7 @@ public class enemyDeactivate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	if (transform.position.y >7)
+	if (transform.position.y >3.2)
         {
             gameObject.SetActive(false);
         }
