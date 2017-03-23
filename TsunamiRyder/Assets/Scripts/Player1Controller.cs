@@ -37,6 +37,12 @@ public class Player1Controller : MonoBehaviour {
             transform.position = spawnPoint.position;
             myRigidbody.velocity = new Vector3();
         }
+
+        if (controller.Action2.WasPressed )
+        {
+            myRigidbody.AddForce(0, thrust*2, 0);
+        }
+           
         
       
 
