@@ -3,7 +3,7 @@ using InControl;
 using System.Collections;
 
 
-public class PlayerController : MonoBehaviour {
+public class Player1Controller : MonoBehaviour {
     private Rigidbody myRigidbody;
     public float speed;
     public float thrust;
