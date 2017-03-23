@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     //bounds of spawner
     public float leftBound = -5F;
     public float rightBound = 5F;
+    public float leftBoundy = 1f;
+    public float rightBoundy = 3f;
 
 
     // Use this for initialization
@@ -33,11 +35,13 @@ public class Spawner : MonoBehaviour
         if (obj == null) return;
 
         obj.transform.position = transform.position;
-        obj.transform.rotation = transform.rotation;
         obj.SetActive(true);
 
         //randomly moves spawner along x axis
         float x = Random.Range(leftBound, rightBound);
         transform.position = new Vector3(x, this.transform.position.y, 0);
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+        float randY = Random.Range(leftBoundy, rightBoundy);
+        rb.AddForce(transform.up * randY);
     }
 }
