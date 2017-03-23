@@ -1,0 +1,22 @@
+Tsunami Ryder Character list 
+
+Ryder(80's surfer) 
+- Can blink
+
+ROBOT
+- 1 less life 
+- Can scan ahead? 
+
+Hobo Carl
+-covered in trash so he can just float (trash pile) 
+- doesnt die just get pushed towards top (then can lose life)
+
+Shark (wearing human mask)
+- can dive into water (under obstacles)
+
+BodyBuilder (doesnt believe in leg day) 
+-can pick up other surfers and throw them 
+
+Super Hero
+- takes 2 hits to lose a life
+- after 1st hit moves slower 
