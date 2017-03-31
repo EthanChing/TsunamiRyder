@@ -3,8 +3,9 @@ using InControl;
 using System.Collections;
 
 
-public class Player1Controller : MonoBehaviour {
-    private Rigidbody myRigidbody;
+public class PlayerController : MonoBehaviour
+{
+    private Rigidbody2D myRigidbody;
     public float speed;
     public float thrust;
 
@@ -17,7 +18,7 @@ public class Player1Controller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody = GetComponent<Rigidbody2D>();
         controller = InputManager.Devices[playerNum];
 	}
 	
@@ -26,11 +27,11 @@ public class Player1Controller : MonoBehaviour {
         var x =  controller.LeftStick.X * speed;
         if (controller.Action1.WasPressed)
         {
-            myRigidbody.AddForce(0, -thrust, 0);
+            myRigidbody.AddForce(new Vector3(0, -thrust));
         }
 
-        myRigidbody.AddForce(0, waveForce, 0);
-        myRigidbody.velocity = new Vector3(x, myRigidbody.velocity.y, myRigidbody.velocity.z);
+        myRigidbody.AddForce(new Vector2(0, waveForce));
+        myRigidbody.velocity = new Vector2(x, myRigidbody.velocity.y);
 
         if (controller.Action4.WasPressed)
         {
@@ -40,7 +41,7 @@ public class Player1Controller : MonoBehaviour {
 
         if (controller.Action2.WasPressed )
         {
-            myRigidbody.AddForce(0, thrust*2, 0);
+            myRigidbody.AddForce(new Vector2(0, thrust*2));
         }
            
         
