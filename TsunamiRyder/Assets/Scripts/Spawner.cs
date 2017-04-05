@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour
 {
-    public float spawnRate = 1;
+    public float spawnRate = 1f;
 
     //enemy prefab
     public GameObject enemy;
@@ -40,8 +40,7 @@ public class Spawner : MonoBehaviour
         //randomly moves spawner along x axis
         float x = Random.Range(leftBound, rightBound);
         transform.position = new Vector3(x, this.transform.position.y, 0);
-        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         float randY = Random.Range(leftBoundy, rightBoundy);
-        rb.AddForce(transform.up * randY);
+      
     }
 }
