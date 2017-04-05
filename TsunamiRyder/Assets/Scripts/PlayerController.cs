@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRigidbody;
     public float speed;
     public float thrust;
+    public float leftBound = -8;
+    public float rightBound = 8 ;
 
     public int playerNum;
-    private InputDevice controller;
+    public InputDevice controller;
     
     public float waveForce;
     public Transform spawnPoint;
@@ -44,7 +46,14 @@ public class PlayerController : MonoBehaviour
             myRigidbody.AddForce(new Vector2(0, thrust*2));
         }
            
-        
+        if (transform.position.x > rightBound)
+        {
+            transform.position = new Vector3(rightBound, transform.position.y, 0);
+        }
+        else if (transform.position.x < leftBound)
+        {
+            transform.position = new Vector3(leftBound, transform.position.y, 0);
+        }
       
 
     }
