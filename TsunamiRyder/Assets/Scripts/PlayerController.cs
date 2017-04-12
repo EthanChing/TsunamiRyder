@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         controller = InputManager.Devices[playerNum];
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        var x =  controller.LeftStick.X * speed;
-        if (controller.Action1.WasPressed)
+
+    // Update is called once per frame
+    void Update() {
+        var x = controller.LeftStick.X * speed;
+        if (controller.Action1.WasPressed || Input.GetKeyDown("space"))
         {
             myRigidbody.AddForce(new Vector3(0, -thrust));
         }
@@ -41,9 +41,10 @@ public class PlayerController : MonoBehaviour
             myRigidbody.velocity = new Vector3();
         }
 
-        if (controller.Action2.WasPressed )
+        if (controller.Action2.WasPressed)
         {
             myRigidbody.AddForce(new Vector2(0, thrust*2));
+            
         }
            
         if (transform.position.x > rightBound)

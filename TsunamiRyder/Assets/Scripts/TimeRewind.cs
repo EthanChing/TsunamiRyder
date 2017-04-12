@@ -11,6 +11,8 @@ public class TimeRewind : MonoBehaviour
     private Vector3 lastPoint;
     private float currentTime;
     public float maxTime;
+    public float timeStamp = 0f;
+    public float cooldownPeriodInSeconds = 5f;
 
     void Update()
 
@@ -23,10 +25,13 @@ public class TimeRewind : MonoBehaviour
             currentTime = 0;
             lastPoint = this.transform.position;
         }
-        if (controller.Action3.WasPressed)
+        if (timeStamp <= Time.time)
         {
-            transform.position = lastPoint;
+            if (controller.Action3.WasPressed)
+            {
+                transform.position = lastPoint;
+                timeStamp = Time.time + cooldownPeriodInSeconds;
+            }
         }
-
     }       
 }
